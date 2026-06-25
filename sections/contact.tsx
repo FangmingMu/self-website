@@ -9,7 +9,7 @@ import Footer from "./footer"
 
 export default function Contact() {
   const { name, email, github, phone, location } = portfolioData.personalInfo
-  const [formState, setFormState] = useState<"idle" | "sending" | "success">("idle")
+  const [formState, setFormState] = useState<"idle" | "sending" | "success" | "error">("idle")
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
 
   const handleSubmit = async (e: FormEvent) => {
@@ -18,18 +18,25 @@ export default function Contact() {
 
     setFormState("sending")
 
-    // Mock API Submit Webhook delay
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-
-    // Optional webhook trigger if API is configured
     try {
-      // await fetch('/api/contact', { method: 'POST', body: JSON.stringify(formData) });
-    } catch (err) {
-      // fallback
-    }
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    setFormState("success")
-    setFormData({ name: "", email: "", message: "" })
+      if (response.ok) {
+        setFormState("success")
+        setFormData({ name: "", email: "", message: "" })
+      } else {
+        setFormState("error")
+      }
+    } catch (err) {
+      console.error(err)
+      setFormState("error")
+    }
 
     // Reset status after a few seconds
     setTimeout(() => {
@@ -179,7 +186,9 @@ export default function Contact() {
                       ? "bg-white text-black hover:bg-neutral-200 cursor-pointer"
                       : formState === "sending"
                       ? "bg-blue-500/20 text-blue-400 border border-blue-500/30"
-                      : "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                      : formState === "success"
+                      ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30"
+                      : "bg-rose-500/20 text-rose-400 border border-rose-500/30"
                   }`}
                 >
                   {formState === "idle" && (
@@ -196,6 +205,11 @@ export default function Contact() {
                   {formState === "success" && (
                     <>
                       留言投递成功! (Success) <Check className="w-4 h-4" />
+                    </>
+                  )}
+                  {formState === "error" && (
+                    <>
+                      投递失败 (Failed)
                     </>
                   )}
                 </button>
