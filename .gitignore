@@ -1,0 +1,31 @@
+# dependencies
+portfolio-mu/node_modules/
+portfolio-mu/.pnp
+portfolio-mu/.pnp.*
+
+# next.js
+portfolio-mu/.next/
+portfolio-mu/out/
+
+# production
+portfolio-mu/build/
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files
+portfolio-mu/.env*
+
+# vercel
+portfolio-mu/.vercel/
+
+# typescript
+portfolio-mu/*.tsbuildinfo
+portfolio-mu/next-env.d.ts
+
+# system / OS
+.DS_Store
+Thumbs.db
