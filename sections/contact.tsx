@@ -19,12 +19,18 @@ export default function Contact() {
     setFormState("sending")
 
     try {
-      const response = await fetch('/api/contact', {
+      const params = new URLSearchParams()
+      params.append("form-name", "contact")
+      params.append("name", formData.name)
+      params.append("email", formData.email)
+      params.append("message", formData.message)
+
+      const response = await fetch('/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(formData),
+        body: params.toString(),
       })
 
       if (response.ok) {
@@ -128,7 +134,14 @@ export default function Contact() {
             <div className="glow-border p-8 rounded-2xl border border-neutral-900 relative overflow-hidden">
               <h4 className="text-lg font-bold text-white mb-6">在线留言板 (API Message Box)</h4>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-5"
+                name="contact"
+                data-netlify="true"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+
                 {/* Input Name */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-name" className="text-2xs font-mono font-bold text-neutral-500 uppercase">
@@ -136,6 +149,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="form-name"
+                    name="name"
                     type="text"
                     required
                     value={formData.name}
@@ -152,6 +166,7 @@ export default function Contact() {
                   </label>
                   <input
                     id="form-email"
+                    name="email"
                     type="email"
                     required
                     value={formData.email}
@@ -168,6 +183,7 @@ export default function Contact() {
                   </label>
                   <textarea
                     id="form-message"
+                    name="message"
                     rows={4}
                     required
                     value={formData.message}
