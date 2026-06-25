@@ -1,6 +1,15 @@
-<!-- This file is only for Netlify detection and won't be seen by users -->
-<form name="contact" data-netlify="true" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <textarea name="message"></textarea>
-</form>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Netlify Form Template</title>
+  </head>
+  <body>
+    <!-- This form is only for Netlify build-time detection. It is hidden from users. -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="contact" />
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
