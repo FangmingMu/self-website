@@ -92,7 +92,7 @@ export default function About() {
                 <div className="w-16 h-16 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300">
                   <Code className="w-8 h-8 text-blue-400" />
                 </div>
-                <span className="text-sm font-semibold text-white tracking-wide">Fangming Mu</span>
+                <span className="text-sm font-semibold text-white tracking-wide">穆芳铭 (Mufangming)</span>
                 <span className="text-xs text-neutral-500 font-mono mt-1">AI Engineering & DL CV Research</span>
               </div>
             </div>

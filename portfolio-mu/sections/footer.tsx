@@ -9,8 +9,7 @@ export default function Footer() {
           </p>
         </div>
         <p className="sm:text-right">
-          Copyright © 2026 Designed & Engineered by{" "}
-          <span className="text-neutral-400 font-semibold">Fangming Mu</span>
+          © 2026 <span className="text-neutral-400 font-semibold">穆芳铭 (Mufangming)</span>. All Rights Reserved.
         </p>
       </div>
     </footer>

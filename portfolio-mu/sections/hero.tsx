@@ -253,6 +253,15 @@ export default function Hero() {
           })}
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-sm sm:text-base font-medium tracking-wide text-neutral-300 -mt-1 mb-3"
+        >
+          穆芳铭
+        </motion.p>
+
         {/* Dynamic Title (Typewriter) */}
         <motion.div
           initial={{ opacity: 0 }}
