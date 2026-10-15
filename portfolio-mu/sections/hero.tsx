@@ -298,9 +298,8 @@ export default function Hero() {
             查看项目 (View Projects)
           </a>
           <a
-            href="file:///D:/Daily/AI-project/self-websites/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/个人简历.pdf"
+            download
             className="px-6 py-3 rounded-full border border-neutral-800 text-neutral-300 font-medium hover:bg-neutral-900 transition-all duration-300 hover:scale-105 hover:border-neutral-700"
           >
             下载简历 (Resume)
